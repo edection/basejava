@@ -20,8 +20,7 @@ public class ArrayStorage {
     }
 
     Resume get(String uuid) {
-        int i;
-        for (i = 0; i < storageSize; i++) {
+        for (int i = 0; i < storageSize; i++) {
             if (storage[i].toString().equals(uuid)) {
                 return storage[i];
             }
@@ -30,18 +29,17 @@ public class ArrayStorage {
     }
 
     void delete(String uuid) {
-        int i;
-        for (i = 0; i < storageSize; i++) {
+        for (int i = 0; i < storageSize; i++) {
             if (storage[i].toString().equals(uuid)) {
                 storage[i] = null;
+                for (int j = i; j < storageSize - 1; j++) {
+                    storage[j] = storage[j + 1];
+                }
+                storageSize--;
+                storage[storageSize] = null;
                 break;
             }
         }
-        for (i = i; i < storageSize - 1; i++) {
-            storage[i] = storage[i + 1];
-        }
-        storageSize--;
-        storage[storageSize] = null;
     }
 
         /**
