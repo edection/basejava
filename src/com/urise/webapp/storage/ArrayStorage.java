@@ -55,13 +55,13 @@ public class ArrayStorage {
             return;
         }
         storage[index] = null;
-        if (storageSize - 1 - index >= 0) System.arraycopy(storage, index + 1, storage, index, storageSize - 1 - index);
+        if (storageSize - 1 - index >= 0) {
+            System.arraycopy(storage, index + 1, storage, index, storageSize - 1 - index);
+        }
         storageSize--;
-        storage[storageSize] = null;
-
     }
 
-    int getIndex(String uuid) {
+    private int getIndex(String uuid) {
         for (int i = 0; i < storageSize; i++) {
             if (storage[i].toString().equals(uuid)) {
                 return i;
